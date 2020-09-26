@@ -1,0 +1,3 @@
+include 'resourceserver'
+include 'authorizationserver'
+include 'client'
