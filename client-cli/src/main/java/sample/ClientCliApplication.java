@@ -34,7 +34,7 @@ public class ClientCliApplication implements CommandLineRunner {
     public void run(String... args) {
         log.info("EXECUTING : command line runner");
         String result = webClient.get()
-            .uri("https://localhost:39001/index")
+            .uri("https://localhost:39001/hello")
             .exchange()
             .flatMap(response -> response.toEntity(String.class))
             .map(ResponseEntity::toString).block();
