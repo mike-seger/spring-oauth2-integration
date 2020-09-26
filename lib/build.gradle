@@ -1,2 +1,9 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'io.github.hakky54:sslcontext-kickstart-for-netty:5.2.2'
+}
+
 bootJar { enabled = false }
 jar { enabled = true }

@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: none
+
+client:
+  ssl:
+    one-way-authentication-enabled: false
+    two-way-authentication-enabled: true
+    key-store: client-identity.jks
+    key-store-password: secret
+    trust-store: client-truststore.jks
+#    trust-store: /Users/michael/git/ssl/spring-oauth2-integration/client-cli/src/main/resources/truststore.jks
+    trust-store-password: secret
+

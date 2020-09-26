@@ -1,5 +1,13 @@
 server:
   port: 39001
+  ssl:
+    enabled: true
+    key-store: client/src/main/resources/server-identity.jks
+    key-password: secret
+    key-store-password: secret
+    trust-store: client/src/main/resources/server-truststore.jks
+    trust-store-password: secret
+    client-auth: need
 
 logging:
   level:
