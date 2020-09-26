@@ -1,13 +1,7 @@
 server:
   port: 39001
   ssl:
-    enabled: true
-    key-store: client/src/main/resources/server-identity.jks
-    key-password: secret
-    key-store-password: secret
-    trust-store: client/src/main/resources/server-truststore.jks
-    trust-store-password: secret
-    client-auth: need
+    enabled: false
 
 logging:
   level:
@@ -17,9 +11,12 @@ logging:
     org.springframework.security.oauth2: INFO
 #    org.springframework.boot.autoconfigure: DEBUG
 
+app.protocol: http
+
 spring:
   thymeleaf:
     cache: false
+#  profiles.active: ssl
   security:
     oauth2:
       client:
@@ -39,8 +36,8 @@ spring:
             scope: message.read,message.write
         provider:
           spring:
-            authorization-uri: http://auth-server:39003/oauth2/authorize
-            token-uri: http://auth-server:39003/oauth2/token
+            authorization-uri: ${app.protocol}://auth-server:39003/oauth2/authorize
+            token-uri: ${app.protocol}://auth-server:39003/oauth2/token
 
 messages:
-  base-uri: http://localhost:39002/messages
+  base-uri: ${app.protocol}://localhost:39002/messages

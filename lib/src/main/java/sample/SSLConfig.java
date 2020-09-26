@@ -6,33 +6,58 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 @Component
 public class SSLConfig {
+    private final static String classPathPrefix="classpath:";
+
     @Bean
     @Scope("prototype")
     public SSLFactory sslFactory(
             @Value("${client.ssl.one-way-authentication-enabled:false}") boolean oneWayAuthenticationEnabled,
             @Value("${client.ssl.two-way-authentication-enabled:false}") boolean twoWayAuthenticationEnabled,
-            @Value("${client.ssl.key-store:}") String keyStorePath,
+            @Value("${client.ssl.key-store:#{null}}") String keyStorePath,
             @Value("${client.ssl.key-store-password:}") char[] keyStorePassword,
-            @Value("${client.ssl.trust-store:}") String trustStorePath,
+            @Value("${client.ssl.trust-store:#{null}}") String trustStorePath,
             @Value("${client.ssl.trust-store-password:}") char[] trustStorePassword) {
-        SSLFactory sslFactory = null;
+        SSLFactory.Builder builder = SSLFactory.builder().withProtocol("TLSv1.3");
+        if (!twoWayAuthenticationEnabled && !oneWayAuthenticationEnabled) {
+            return null;
+        } /*else if (!twoWayAuthenticationEnabled) {
+            trustStorePath = null;
+        }*/
 
-        if (oneWayAuthenticationEnabled) {
-            sslFactory = SSLFactory.builder()
-                .withTrustMaterial(trustStorePath, trustStorePassword)
-                .withProtocol("TLSv1.3")
-                .build();
-        }
+        builder = withIdentityMaterial(builder, keyStorePath, keyStorePassword);
+        builder = withTrustMaterial(builder, trustStorePath, trustStorePassword);
 
-        if (twoWayAuthenticationEnabled) {
-            sslFactory = SSLFactory.builder()
-                .withIdentityMaterial(keyStorePath, keyStorePassword)
-                .withTrustMaterial(trustStorePath, trustStorePassword)
-                .withProtocol("TLSv1.3")
-                .build();
+        return builder.build();
+    }
+
+    //TODO find a more elegant solution for the redundant with...Materials methods
+    private SSLFactory.Builder withIdentityMaterial(SSLFactory.Builder builder,
+        String keyStorePath, char [] keyStorePassword) {
+        if(keyStorePath==null) {
+            return builder;
         }
-        return sslFactory;
+        if(keyStorePath.startsWith(classPathPrefix)) {
+            return builder.withIdentityMaterial(stripClassPath(keyStorePath), keyStorePassword);
+        }
+        return builder.withIdentityMaterial(new File(keyStorePath).toPath(), keyStorePassword);
+    }
+
+    private SSLFactory.Builder withTrustMaterial(SSLFactory.Builder builder,
+        String trustStorePath, char [] trustStorePassword) {
+        if(trustStorePath==null) {
+            return builder;
+        }
+        if(trustStorePath.startsWith(classPathPrefix)) {
+            return builder.withTrustMaterial(stripClassPath(trustStorePath), trustStorePassword);
+        }
+        return builder.withTrustMaterial(new File(trustStorePath).toPath(), trustStorePassword);
+    }
+
+    private String stripClassPath(String s) {
+        return s.replaceAll("^"+classPathPrefix, "");
     }
 }

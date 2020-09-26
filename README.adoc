@@ -9,3 +9,7 @@ This sample integrates `spring-security-oauth2-client` and `spring-security-oaut
 * Run Resource Server -> `./gradlew -b resourceserver/build.gradle bootRun`
 * Run Client -> `./gradlew -b client/build.gradle bootRun`
 * Go to `http://localhost:39001`
+
+Enabling SSL
+For each of Resource and Authorization servers:
+./gradlew -Dspring.profiles.active=ssl ...

@@ -1,0 +1,15 @@
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:server-identity.jks
+    key-password: secret
+    key-store-password: secret
+
+app.protocol: https
+
+client:
+  ssl:
+    one-way-authentication-enabled: true
+    trust-store: classpath:client-truststore.jks
+    trust-store-password: secret
+

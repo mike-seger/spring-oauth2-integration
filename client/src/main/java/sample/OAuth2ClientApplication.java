@@ -26,6 +26,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class OAuth2ClientApplication {
 
 	public static void main(String[] args) {
+		javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+				new javax.net.ssl.HostnameVerifier(){
+
+					public boolean verify(String hostname,
+										  javax.net.ssl.SSLSession sslSession) {
+						return hostname.equals("auth-server");
+					}
+				});
 		SpringApplication.run(OAuth2ClientApplication.class, args);
 	}
 

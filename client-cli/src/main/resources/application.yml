@@ -1,15 +1,11 @@
 spring:
   main:
-    banner-mode: "off"
+    banner-mode: off
     web-application-type: none
+  #profiles.active: ssl-2way-auth
+  #profiles.active: ssl
 
-client:
-  ssl:
-    one-way-authentication-enabled: false
-    two-way-authentication-enabled: true
-    key-store: client-identity.jks
-    key-store-password: secret
-    trust-store: client-truststore.jks
-#    trust-store: /Users/michael/git/ssl/spring-oauth2-integration/client-cli/src/main/resources/truststore.jks
-    trust-store-password: secret
+app.protocol: http
 
+app:
+  test-url: ${app.protocol}://localhost:39001/hello

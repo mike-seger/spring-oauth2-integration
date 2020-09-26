@@ -24,6 +24,11 @@ subprojects {
 	apply plugin: 'io.spring.dependency-management'
 
 	sourceCompatibility = '11'
+
+	bootRun {
+		systemProperties System.properties
+		jvmArgs = [ "-Djavax.net.ssl.trustStore=resourceserver/src/main/resources/client-truststore.jks", "-Djavax.net.ssl.trustStorePassword=secret"]
+	}
 }
 
 test {

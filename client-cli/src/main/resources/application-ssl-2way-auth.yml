@@ -1,0 +1,8 @@
+spring.profiles.include: ssl
+
+client:
+  ssl:
+    two-way-authentication-enabled: true
+    key-store: classpath:client-identity.jks
+    key-store-password: secret
+
