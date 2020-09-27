@@ -46,9 +46,9 @@ public class AuthorizationController {
 			@RegisteredOAuth2AuthorizedClient("messaging-client-authorization-code")
 					OAuth2AuthorizedClient authorizedClient) {
 
-		String[] messages = this.webClient
+		String[] messages = webClient
 				.get()
-				.uri(this.messagesBaseUri)
+				.uri(messagesBaseUri)
 				.attributes(oauth2AuthorizedClient(authorizedClient))
 				.retrieve()
 				.bodyToMono(String[].class)

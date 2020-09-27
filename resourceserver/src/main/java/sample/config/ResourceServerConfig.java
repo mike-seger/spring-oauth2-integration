@@ -19,14 +19,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-/**
- * @author Joe Grandja
- * @since 0.0.1
- */
 @EnableWebSecurity
 public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
-	// @formatter:off
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -37,5 +32,4 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 				.oauth2ResourceServer()
 					.jwt();
 	}
-	// @formatter:on
 }

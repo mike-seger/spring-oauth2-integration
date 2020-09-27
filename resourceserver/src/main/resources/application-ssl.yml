@@ -4,12 +4,15 @@ server:
     key-store: classpath:server-identity.jks
     key-password: secret
     key-store-password: secret
+    trust-store: classpath:common-truststore.jks
+    trust-store-password: secret
+    client-auth: need
 
 app.protocol: https
 
 client:
   ssl:
     one-way-authentication-enabled: true
-    trust-store: classpath:client-truststore.jks
+    trust-store: classpath:common-truststore.jks
     trust-store-password: secret
 

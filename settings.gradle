@@ -1,5 +1,6 @@
-include 'lib'
 include 'authorizationserver'
 include 'resourceserver'
+include 'client-lib'
 include 'client'
+include 'client2'
 include 'client-cli'

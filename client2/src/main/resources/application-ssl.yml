@@ -1,0 +1,10 @@
+app.protocol: https
+
+oauth2.client.registration.local.ssl-enabled: true
+oauth2.client.registration.local.keystore: classpath:client-identity.jks
+oauth2.client.registration.local.keystore-password: secret
+oauth2.client.registration.local.truststore: classpath:common-truststore.jks
+oauth2.client.registration.local.truststore-password: secret
+
+logging.level.reactor.netty.http.client: DEBUG
+

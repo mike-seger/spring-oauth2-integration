@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.4.RELEASE' apply false
+	id 'org.springframework.boot' version '2.3.1.RELEASE' apply false
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
@@ -29,8 +29,8 @@ subprojects {
 		systemProperties System.properties
 		jvmArgs = [ "-Djavax.net.ssl.trustStore=resourceserver/src/main/resources/client-truststore.jks", "-Djavax.net.ssl.trustStorePassword=secret"]
 	}
-}
 
-test {
-	useJUnitPlatform()
+	test {
+		useJUnitPlatform()
+	}
 }

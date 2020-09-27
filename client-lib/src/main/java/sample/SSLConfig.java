@@ -6,11 +6,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.File;
 
 @Component
 public class SSLConfig {
     private final static String classPathPrefix="classpath:";
+
+    static {
+        HttpsURLConnection.setDefaultHostnameVerifier((hostname, sslSession) -> true);
+    }
 
     @Bean
     @Scope("prototype")
@@ -24,9 +29,7 @@ public class SSLConfig {
         SSLFactory.Builder builder = SSLFactory.builder().withProtocol("TLSv1.3");
         if (!twoWayAuthenticationEnabled && !oneWayAuthenticationEnabled) {
             return null;
-        } /*else if (!twoWayAuthenticationEnabled) {
-            trustStorePath = null;
-        }*/
+        }
 
         builder = withIdentityMaterial(builder, keyStorePath, keyStorePassword);
         builder = withTrustMaterial(builder, trustStorePath, trustStorePassword);
@@ -34,7 +37,7 @@ public class SSLConfig {
         return builder.build();
     }
 
-    //TODO find a more elegant solution for the redundant with...Materials methods
+    //TODO find an elegant solution for the redundant with...Materials methods
     private SSLFactory.Builder withIdentityMaterial(SSLFactory.Builder builder,
         String keyStorePath, char [] keyStorePassword) {
         if(keyStorePath==null) {
@@ -46,6 +49,7 @@ public class SSLConfig {
         return builder.withIdentityMaterial(new File(keyStorePath).toPath(), keyStorePassword);
     }
 
+    //TODO find an elegant solution for the redundant with...Materials methods
     private SSLFactory.Builder withTrustMaterial(SSLFactory.Builder builder,
         String trustStorePath, char [] trustStorePassword) {
         if(trustStorePath==null) {
