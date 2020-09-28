@@ -1,7 +1,0 @@
-client:
-  ssl:
-    one-way-authentication-enabled: true
-    trust-store: ssl/truststore.jks
-    trust-store-password: secret
-
-app.protocol: https
