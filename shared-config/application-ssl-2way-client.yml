@@ -1,5 +1,3 @@
-spring.profiles.include: ssl-client
-
 client:
   ssl:
     two-way-authentication-enabled: true

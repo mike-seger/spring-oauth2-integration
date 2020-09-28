@@ -4,10 +4,14 @@ This sample integrates `spring-security-oauth2-client` and `spring-security-oaut
 
 == Run the Sample
 
-* Run Authorization Server -> `./gradlew -b authorizationserver/build.gradle bootRun`
-* Run Resource Server -> `./gradlew -b resourceserver/build.gradle bootRun`
-* Run Client -> `./gradlew -b client/build.gradle bootRun`
-* Go to `http://localhost:39001`
+```
+./gradlew build
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssh-2way -jar authorizationserver/build/libs/authorizationserver.jar
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client -jar resourceserver/build/libs/resourceserver.jar
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl-client,ssl-2way-client -jar client/build/libs/client.jar
+```
+
+* Open `http://localhost:39001` in your browser
 
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`
 

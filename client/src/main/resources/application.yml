@@ -11,9 +11,8 @@ logging:
     org.springframework.security.oauth2: info
     org.apache.http: debug
     httpclient.wire: debug
+    sample.util.PropertiesDumper: debug
     # org.springframework.boot.autoconfigure: debug
-
-spring.profiles.active: ${app.client.spring-profiles}
 
 spring:
   thymeleaf:
@@ -41,4 +40,6 @@ spring:
             token-uri: ${app.auth-server.base-url}/oauth2/token
 
 messages:
-  base-uri: ${app.auth-server.protocol}://localhost:39002/messages
+  base-uri: "https://localhost:39002/messages"
+# FIXME this doesn't get resolved although the property is available
+#  base-uri: "${app.rsrc-server.base-url}/messages"

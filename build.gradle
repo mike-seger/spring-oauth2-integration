@@ -26,8 +26,10 @@ subprojects {
 	sourceCompatibility = '11'
 
 	bootRun {
+		jvmArgs = [
+			"-Dspring.config.additional-location=shared-config/"
+		]
 		systemProperties System.properties
-		jvmArgs = [ "-Djavax.net.ssl.trustStore=resourceserver/src/main/resources/client-truststore.jks", "-Djavax.net.ssl.trustStorePassword=secret"]
 	}
 
 	test {
