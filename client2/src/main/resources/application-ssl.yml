@@ -4,7 +4,7 @@ oauth2.client.registration.local:
   ssl-enabled: true
   keystore: ssl/client-identity.jks
   keystore-password: secret
-  truststore: ssl/server-truststore.jks
+  truststore: ssl/truststore.jks
   truststore-password: secret
 
 logging.level.reactor.netty.http.client: debug

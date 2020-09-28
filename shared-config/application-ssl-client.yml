@@ -1,6 +1,6 @@
 client:
   ssl:
-    trust-store: ssl/server-truststore.jks
+    trust-store: ssl/truststore.jks
     trust-store-password: secret
     # use javax.net.debug values here:
     net-debug: none

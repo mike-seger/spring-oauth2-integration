@@ -4,5 +4,5 @@ server:
     key-store: ssl/server-identity.jks
     key-password: secret
     key-store-password: secret
-    trust-store: ssl/server-truststore.jks
+    trust-store: ssl/truststore.jks
     trust-store-password: secret

@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.File;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 
 @Component
 public class SSLConfig {

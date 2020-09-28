@@ -1,8 +1,0 @@
-spring.profiles.include: ssl
-
-client:
-  ssl:
-    key-store: ssl/client-identity.jks
-    key-store-password: secret
-
-

@@ -26,8 +26,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 /**
  * @author Karanbir Singh on 07/18/2020
  */

@@ -1,3 +1,5 @@
+Client Credential Flow
+
 client          >> POST+basic-auth:client-creds+body(scope+type)
                 url:authorizationserver:/oauth2/token
                 << json: access_token...
