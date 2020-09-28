@@ -5,21 +5,19 @@ server:
 
 logging:
   level:
-    root: INFO
-    org.springframework.web: INFO
-    org.springframework.security: INFO
-    org.springframework.security.oauth2: INFO
-    org.apache.http: DEBUG
-    httpclient.wire: DEBUG
+    root: info
+    org.springframework.web: info
+    org.springframework.security: info
+    org.springframework.security.oauth2: info
+    org.apache.http: debug
+    httpclient.wire: debug
+    # org.springframework.boot.autoconfigure: debug
 
-#    org.springframework.boot.autoconfigure: DEBUG
-
-app.protocol: http
+spring.profiles.active: ${app.client.spring-profiles}
 
 spring:
   thymeleaf:
     cache: false
-#  profiles.active: ssl
   security:
     oauth2:
       client:
@@ -39,8 +37,8 @@ spring:
             scope: message.read,message.write
         provider:
           spring:
-            authorization-uri: ${app.protocol}://auth-server:39003/oauth2/authorize
-            token-uri: ${app.protocol}://auth-server:39003/oauth2/token
+            authorization-uri: ${app.auth-server.base-url}/oauth2/authorize
+            token-uri: ${app.auth-server.base-url}/oauth2/token
 
 messages:
-  base-uri: ${app.protocol}://localhost:39002/messages
+  base-uri: ${app.auth-server.protocol}://localhost:39002/messages

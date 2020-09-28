@@ -1,0 +1,5 @@
+spring.profiles.include: ssl
+
+server:
+  ssl:
+    client-auth: need

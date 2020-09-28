@@ -43,7 +43,7 @@ public class SSLContextService {
             final TrustManagerFactory trustManagerFactory) throws AppBootTimeException {
         try {
             SslContext sslContext = SslContextBuilder.forClient()
-                    .clientAuth(ClientAuth.REQUIRE)
+                   // .clientAuth(ClientAuth.REQUIRE)
                     .keyManager(keyManagerFactory)
                     // the following line is not recommended and commented out
                    //  .trustManager(InsecureTrustManagerFactory.INSTANCE)
@@ -85,10 +85,13 @@ public class SSLContextService {
         }
     }
 
-    private KeyStore loadKeyStore(final String location,
+    private KeyStore loadKeyStore(String location,
             final String password) throws KeyStoreException,
                 IOException, CertificateException, NoSuchAlgorithmException {
         KeyStore keyStore = KeyStore.getInstance("JKS");
+        if(!location.matches("[^:]{3,}:")) {
+            location="file:./"+location;
+        }
         Resource resource = resourceLoader.getResource(location);
         try (InputStream inputStream = resource.getInputStream()) {
             keyStore.load(inputStream, password.toCharArray());

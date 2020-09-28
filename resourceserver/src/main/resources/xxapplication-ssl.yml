@@ -1,0 +1,18 @@
+server:
+  ssl:
+    enabled: true
+    key-store: ssl/server-identity.jks
+    key-password: secret
+    key-store-password: secret
+
+client:
+  ssl:
+    trust-store: ssl/server-truststore.jks
+    trust-store-password: secret
+    # use javax.net.debug values here:
+    net-debug: none
+
+app:
+  auth-server:
+    protocol: https
+

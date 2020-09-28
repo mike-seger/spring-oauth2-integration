@@ -1,0 +1,9 @@
+app:
+  auth-server:
+    protocol: https
+
+client:
+  ssl:
+    one-way-authentication-enabled: true
+    trust-store: ssl/common-truststore.jks
+    trust-store-password: secret

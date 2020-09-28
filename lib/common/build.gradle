@@ -1,0 +1,16 @@
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'io.github.hakky54:sslcontext-kickstart-for-netty:5.2.2'
+    implementation 'com.github.skjolber.jackson:jackson-syntax-highlight:1.0.5'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.6'
+}
+
+bootJar { enabled = false }
+jar { enabled = true }

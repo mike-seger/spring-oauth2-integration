@@ -2,15 +2,18 @@ server.port: 39004
 
 app.protocol: http
 
-spring.security.oauth2.client.registration.local.provider: spring
-spring.security.oauth2.client.registration.local.authorization-grant-type: client_credentials
-spring.security.oauth2.client.registration.local.client-id: messaging-client
-spring.security.oauth2.client.registration.local.client-secret: secret
-spring.security.oauth2.client.registration.local.scope: message.read,message.write
-spring.security.oauth2.client.provider.spring.token-uri: ${app.protocol}://localhost:39003/oauth2/token
+spring.security.oauth2.client:
+  registration.local:
+    provider: spring
+    authorization-grant-type: client_credentials
+    client-id: messaging-client
+    client-secret: secret
+    scope: message.read,message.write
+  provider.spring.token-uri: ${app.protocol}://localhost:39003/oauth2/token
 
 oauth2.client.registration.local.ssl-enabled: false
 
-test.client.host: http://localhost:39005
-test.client.base.url: ${app.protocol}://localhost:39002
-test.client.test.path: /messages
+test.client:
+  host: http://localhost:39005
+  base.url: ${app.protocol}://localhost:39002
+  test.path: /messages

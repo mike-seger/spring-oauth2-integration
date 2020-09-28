@@ -3,18 +3,24 @@ server:
 
 logging:
   level:
-    root: INFO
-    org.springframework.web: INFO
-    org.springframework.security: INFO
-    org.springframework.security.oauth2: INFO
-#    org.springframework.boot.autoconfigure: DEBUG
+    root: info
+    org.springframework.web: info
+    org.springframework.security: info
+    org.springframework.security.oauth2: info
+#    sample.util.PropertiesDumper: debug
+#    org.springframework.boot.autoconfigure: debug
 
-app.protocol: http
+app:
+  auth-server:
+    protocol: http
+    host: localhost
+    port: 39003
+
+spring.profiles.active: ${app.rsrc-server.spring-profiles}
 
 spring:
-#  profiles.active: ssl
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: ${app.protocol}://localhost:39003/oauth2/jwks
+          jwk-set-uri: ${app.auth-server.protocol}://${app.auth-server.host}:${app.auth-server.port}/oauth2/jwks

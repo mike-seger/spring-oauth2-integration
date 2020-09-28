@@ -45,15 +45,15 @@ public class AuthorizationServerConfig {
 	@Bean
 	public RegisteredClientRepository registeredClientRepository() {
 		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-				.clientId("messaging-client")
-				.clientSecret("secret")
-				.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
-				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-				.redirectUri("http://localhost:39001/authorized")
-				.scope("message.read")
-				.scope("message.write")
-				.build();
+			.clientId("messaging-client")
+			.clientSecret("secret")
+			.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
+			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+			.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+			.redirectUri("http://localhost:39001/authorized")
+			.scope("message.read")
+			.scope("message.write")
+			.build();
 		return new InMemoryRegisteredClientRepository(registeredClient);
 	}
 	// @formatter:on
@@ -67,10 +67,10 @@ public class AuthorizationServerConfig {
 	@Bean
 	public UserDetailsService users() {
 		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user1")
-				.password("password")
-				.roles("USER")
-				.build();
+			.username("user1")
+			.password("password")
+			.roles("USER")
+			.build();
 		return new InMemoryUserDetailsManager(user);
 	}
 	// @formatter:on
