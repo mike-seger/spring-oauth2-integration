@@ -6,9 +6,9 @@ This sample integrates `spring-security-oauth2-client` and `spring-security-oaut
 
 ```
 ./gradlew build
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssh-2way -jar authorizationserver/build/libs/authorizationserver.jar
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client -jar resourceserver/build/libs/resourceserver.jar
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl-client,ssl-2way-client -jar client/build/libs/client.jar
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssh-2way -jar authorizationserver/build/libs/authorizationserver.jar &
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client -jar resourceserver/build/libs/resourceserver.jar &
+java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl-client,ssl-2way-client -jar client/build/libs/client.jar &
 ```
 
 * Open `http://localhost:39001` in your browser
