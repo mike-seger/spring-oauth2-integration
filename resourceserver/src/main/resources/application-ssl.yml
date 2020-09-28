@@ -12,7 +12,8 @@ app.protocol: https
 
 client:
   ssl:
-    one-way-authentication-enabled: true
+    key-store: classpath:client-identity.jks
+    key-store-password: secret
     trust-store: classpath:common-truststore.jks
     trust-store-password: secret
 

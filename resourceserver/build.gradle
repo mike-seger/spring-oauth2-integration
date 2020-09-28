@@ -2,5 +2,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-//	implementation project(':client-lib')
+	//implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation project(':client-lib')
 }

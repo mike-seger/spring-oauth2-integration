@@ -17,7 +17,7 @@ import static java.util.Objects.nonNull;
 
 @Component
 @Slf4j
-public class ClientConfig {
+public class HttpClientConfig {
     @Bean
     @Scope("prototype")
     public HttpClient nettyHttpClient(@Autowired(required = false) SSLFactory sslFactory) throws SSLException {
