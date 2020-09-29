@@ -23,8 +23,19 @@ java -Dspring.config.additional-location=./shared-config/ \
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`
 
 == SSL Profiles
-For each of the servers ssl profiles can be set like e.g.:
+For each of the applications SSL profiles can be set, such as:
 java -Dspring.profiles.active=ssl ...
+
+=== no profiles
+Without any SSL profiles set, the applications will run without any SSL.
+
+=== one-way SSL
+One level higher is setting ssl/ssl-client. This enables one way SSL without any client certificates.
+
+=== two-way SSL
+The highest level is using the -2way profiles in addition. This enables 2-way (mutual) TLS, requiring client certificates.
+
+== Allowed SSL profiles per app
 
 === client
 ssl-client, ssl-2way-client
