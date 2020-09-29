@@ -28,6 +28,20 @@ java -Dspring.config.additional-location=./shared-config/ \
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`
 * Use `curl  http://localhost:39001/authorize?grant_type=client_credentials` for the credentials flow
 
+== Applications
+=== client
+This application acts in two roles:
+
+* the intermediary between the browser and the protected resource
+* the backend server accessing the resource via client credentials flow.
+
+=== authorizationserver
+This is the usual authorization server producing access tokens and a form based login.
+
+=== resourceserver
+This is the server containing the resource being protected by authorizations, aka your API.
+
+
 == SSL Profiles
 For each of the applications SSL profiles can be set, such as:
 java -Dspring.profiles.active=ssl ...
