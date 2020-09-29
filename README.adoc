@@ -2,6 +2,12 @@
 
 This sample integrates `spring-security-oauth2-client` and `spring-security-oauth2-resource-server` with *Spring Authorization Server*.
 
+The illustrated OAuth2 flows are:
+
+* authorization flow
+* client credentials flow
+
+
 == Run the Sample
 
 [source]
