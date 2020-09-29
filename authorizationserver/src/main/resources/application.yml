@@ -1,5 +1,5 @@
 server:
-  port: 39003
+  port: ${app.auth-server.port:39003}
 
 logging:
   level:

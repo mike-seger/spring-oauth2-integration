@@ -3,20 +3,14 @@ app:
     protocol: http
     host: localhost
     port: 39001
-    base-url: ${client.protocol}://${client.host}:${client.port}
+    base-url: ${app.client.protocol}://${app.client.host}:${app.client.port}
   rsrc-server:
     protocol: http
     host: localhost
     port: 39002
-    base-url: ${rsrc-server.protocol}://${rsrc-server.host}:${rsrc-server.port}
+    base-url: ${app.rsrc-server.protocol}://${app.rsrc-server.host}:${app.rsrc-server.port}
   auth-server:
     protocol: http
     host: auth-server
     port: 39003
     base-url: ${app.auth-server.protocol}://${app.auth-server.host}:${app.auth-server.port}
-
-
-#spring.profiles.active:
-#  - ssl
-#  - ssl-2way-client
-#  - ssl-2way

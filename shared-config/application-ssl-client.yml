@@ -2,9 +2,9 @@ client:
   ssl:
     trust-store: ssl/truststore.jks
     trust-store-password: secret
-    # use javax.net.debug values here:
+    # use javax.net.debug values here, like all, ssl...
     net-debug: none
 
-app:
-  auth-server:
-    protocol: https
+app.client.protocol: https
+app.rsrc-server.protocol: https
+app.auth-server.protocol: https

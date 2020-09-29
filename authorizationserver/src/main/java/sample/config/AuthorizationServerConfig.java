@@ -44,6 +44,8 @@ public class AuthorizationServerConfig {
 
 	@Bean
 	public UserDetailsService users() {
+		//FIXME should not be used for production
+		@SuppressWarnings("deprecation")
 		UserDetails user = User.withDefaultPasswordEncoder()
 			.username("user1")
 			.password("password")

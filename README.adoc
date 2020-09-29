@@ -25,15 +25,15 @@ java -Dspring.config.additional-location=./shared-config/ \
 ----
 
 * Open `http://localhost:39001` in your browser
-
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`
+* Use `curl  http://localhost:39001/authorize?grant_type=client_credentials` for the credentials flow
 
 == SSL Profiles
 For each of the applications SSL profiles can be set, such as:
 java -Dspring.profiles.active=ssl ...
 
 === no profiles
-Without any SSL profiles set, the applications will run without any SSL.
+Without any SSL profiles set the applications will run without any SSL.
 
 === one-way SSL
 One level higher is setting ssl/ssl-client. This enables one way SSL without any client certificates.

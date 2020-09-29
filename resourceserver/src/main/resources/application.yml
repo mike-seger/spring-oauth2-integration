@@ -1,5 +1,5 @@
 server:
-  port: 39002
+  port: ${app.rsrc-server.port:39002}
 
 logging:
   level:

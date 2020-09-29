@@ -6,3 +6,4 @@ server:
     key-store-password: secret
     trust-store: ssl/truststore.jks
     trust-store-password: secret
+

@@ -1,5 +1,5 @@
 server:
-  port: 39001
+  port: ${app.client.port:39001}
   ssl:
     enabled: false
 
@@ -40,6 +40,4 @@ spring:
             token-uri: ${app.auth-server.base-url}/oauth2/token
 
 messages:
-  base-uri: "https://localhost:39002/messages"
-# FIXME this doesn't get resolved although the property is available
-#  base-uri: "${app.rsrc-server.base-url}/messages"
+  base-uri: "${app.rsrc-server.base-url}/messages"
