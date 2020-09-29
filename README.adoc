@@ -44,14 +44,16 @@ The highest level is using the -2way profiles in addition. This enables 2-way (m
 == Allowed SSL profiles per app
 
 === client
-ssl-client, ssl-2way-client
+* ssl-client
+* ssl-2way-client
 
 === authorizationserver
-ssl, ssl-2way
+* ssl
+* ssl-2way
 
 === resourceserver
-ssl-2way, ssl-2way-client (all 2-way)
-ssl, ssl-2way
+* ssl-2way, ssl-2way-client (all 2-way)
+* ssl, ssl-2way
 
 == Interaction Diagram
 [ditaa]
