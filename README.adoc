@@ -4,29 +4,53 @@ This sample integrates `spring-security-oauth2-client` and `spring-security-oaut
 
 == Run the Sample
 
-```
+[source]
+----
 ./gradlew build
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssh-2way -jar authorizationserver/build/libs/authorizationserver.jar &
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client -jar resourceserver/build/libs/resourceserver.jar &
-java -Dspring.config.additional-location=./shared-config/ -Dspring.profiles.active=ssl-client,ssl-2way-client -jar client/build/libs/client.jar &
-```
+java -Dspring.config.additional-location=./shared-config/ \
+    -Dspring.profiles.active=ssl,ssh-2way \
+    -jar authorizationserver/build/libs/authorizationserver.jar &
+java -Dspring.config.additional-location=./shared-config/ \
+    -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client \
+    -jar resourceserver/build/libs/resourceserver.jar &
+java -Dspring.config.additional-location=./shared-config/ \
+    -Dspring.profiles.active=ssl-client,ssl-2way-client \
+    -jar client/build/libs/client.jar &
+----
 
 * Open `http://localhost:39001` in your browser
 
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`
 
-== Enabling SSL
+== SSL Profiles
 For each of the servers ssl profiles can be set:
 ./gradlew -Dspring.profiles.active=ssl ...
 
 === client
-ssl-2way-client
+ssl-client, ssl-2way-client
 
 === authorizationserver
-ssl
-ssl-2way,ssl (TODO: ssl is not included automatically)
+ssl, ssl-2way
 
 === resourceserver
-ssl-2way,ssl-2way-client (all 2-way)
-ssl-2way-client (no ssl server)
+ssl-2way, ssl-2way-client (all 2-way)
+ssl, ssl-2way
 
+== Interaction Diagram
+[ditaa]
+....
+                            +---------------+
+                            | Authorization |
+                     +----> |    Server     |
+                     |      +---------------+
++-------------+      |              ^
+|   Client    +------+              |
+|    App      +------+              |
++-------------+      |              |
+                     |      +-------+-------+
+                     +----> |   Resource    |
+                            |    Server     |
+                            +---------------+
+
+
+....
