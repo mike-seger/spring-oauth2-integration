@@ -27,7 +27,7 @@ subprojects {
 
 	bootRun {
 		jvmArgs = [
-			"-Dspring.config.additional-location=shared-config/"
+			"-Dspring.config.additional-location=../shared-config/"
 		]
 		systemProperties System.properties
 	}

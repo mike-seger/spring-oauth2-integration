@@ -8,7 +8,7 @@ The illustrated OAuth2 flows are:
 * client credentials flow
 
 
-== Run the Sample
+== Running the Sample
 
 [source]
 ----
