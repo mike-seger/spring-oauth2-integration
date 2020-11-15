@@ -40,4 +40,5 @@ spring:
             token-uri: ${app.auth-server.base-url}/oauth2/token
 
 messages:
-  base-uri: "${app.rsrc-server.base-url}/messages"
+  base-uri: ${app.rsrc-server.base-url:http://localhost:39002/}/messages
+  #base-uri: ${app.rsrc-server.base-url}/messages

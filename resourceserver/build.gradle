@@ -2,6 +2,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.zalando:logbook-spring-boot-starter:2.4.1'
 	implementation project(':lib:common')
 	implementation project(':lib:client')
 }
