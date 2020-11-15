@@ -30,6 +30,8 @@ public class AuthorizationServerConfig {
 			.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 			.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+			.authorizationGrantType(AuthorizationGrantType.PASSWORD)
+			.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
 			.redirectUri("http://localhost:39001/authorized")
 			.scope("message.read")
 			.scope("message.write")

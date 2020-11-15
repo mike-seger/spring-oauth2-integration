@@ -4,7 +4,7 @@ import io.netty.handler.ssl.SslContext;
 import lombok.extern.slf4j.Slf4j;
 import nl.altindag.sslcontext.SSLFactory;
 import nl.altindag.sslcontext.util.NettySslContextUtils;
-import org.apache.http.impl.client.HttpClients;
+//import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -29,17 +29,17 @@ public class ClientConfig {
         return httpClient;
     }
 
-    @Bean
-    @Scope("prototype")
-    public org.apache.http.client.HttpClient apacheHttpClient(@Autowired(required = false) SSLFactory sslFactory) {
-        if (nonNull(sslFactory)) {
-            return HttpClients.custom()
-                .setSSLContext(sslFactory.getSslContext())
-                .setSSLHostnameVerifier(sslFactory.getHostnameVerifier())
-                .build();
-        } else {
-            return HttpClients.createMinimal();
-        }
-    }
+//    @Bean
+//    @Scope("prototype")
+//    public org.apache.http.client.HttpClient apacheHttpClient(@Autowired(required = false) SSLFactory sslFactory) {
+//        if (nonNull(sslFactory)) {
+//            return HttpClients.custom()
+//                .setSSLContext(sslFactory.getSslContext())
+//                .setSSLHostnameVerifier(sslFactory.getHostnameVerifier())
+//                .build();
+//        } else {
+//            return HttpClients.createMinimal();
+//        }
+//    }
 
 }

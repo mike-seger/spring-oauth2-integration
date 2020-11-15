@@ -10,6 +10,7 @@ The illustrated OAuth2 flows are:
 
 == Running the Sample
 
+=== Using Java to Run
 [source]
 ----
 ./gradlew build
@@ -20,9 +21,26 @@ java -Dspring.config.additional-location=./shared-config/ \
     -Dspring.profiles.active=ssl,ssl-2way,ssl-client,ssl-2way-client \
     -jar resourceserver/build/libs/resourceserver.jar &
 java -Dspring.config.additional-location=./shared-config/ \
-    -Dspring.profiles.active=ssl-client,ssl-2way-client \
     -jar client/build/libs/client.jar &
 ----
+
+=== Using gradle to run in multiple terminals:
+[source]
+----
+./gradlew -Dspring.config.additional-location=../shared-config/ authorizationserver:bootRun
+----
+
+[source]
+----
+./gradlew -Dspring.config.additional-location=../shared-config/ resourceserver:bootRun
+----
+
+[source]
+----
+./gradlew -Dspring.config.additional-location=../shared-config/ client:bootRun
+----
+
+== Using the Sample
 
 * Open `http://localhost:39001` in your browser
 ** *IMPORTANT:* For the Authorization Flow: Make sure to modify your `/etc/hosts` file to avoid problems with session cookie overwrites between `client` and `authorizationserver`. Simply add the entry `127.0.0.1	auth-server`

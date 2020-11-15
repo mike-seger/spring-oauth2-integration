@@ -12,9 +12,14 @@ logging:
     org.apache.http: debug
     httpclient.wire: debug
     sample.util.PropertiesDumper: debug
+    org.zalando.logbook: trace
+    org.springframework.web.reactive.function.client.ExchangeFunctions: trace
+    reactor.netty.http.client: trace
     # org.springframework.boot.autoconfigure: debug
 
 spring:
+  http.log-request-details: true
+  mvc:.log-request-details: true
   thymeleaf:
     cache: false
   security:
@@ -34,6 +39,13 @@ spring:
             client-secret: secret
             authorization-grant-type: client_credentials
             scope: message.read,message.write
+          messaging-client-password:
+            provider: spring
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: password
+            scope: message.read,message.write
+
         provider:
           spring:
             authorization-uri: ${app.auth-server.base-url}/oauth2/authorize
