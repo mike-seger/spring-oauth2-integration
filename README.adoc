@@ -1,5 +1,7 @@
 = OAuth 2.0 Integration Sample
 
+!work in progress migrating to reactive!
+
 This sample integrates `spring-security-oauth2-client` and `spring-security-oauth2-resource-server` with *Spring Authorization Server*.
 
 The illustrated OAuth2 flows are:
