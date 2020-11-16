@@ -1,0 +1,5 @@
+curl -s 'https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=2.4.0.RELEASE&
+  --compressed \
+  -o gateway.zip
+
+exit 0

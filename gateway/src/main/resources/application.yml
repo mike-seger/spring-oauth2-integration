@@ -1,0 +1,47 @@
+server.port: 39005
+
+spring:
+  application:
+    name: gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth-server:39003/oauth2/jwks
+#          jwk-set-uri: ${app.auth-server.protocol}://${app.auth-server.host}:${app.auth-server.port}/oauth2/jwks
+      client:
+        registration:
+          messaging-client-authorization-code:
+            provider: spring
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/authorized"
+            scope: message.read,message.write
+          messaging-client-client-credentials:
+            provider: spring
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            scope: message.read,message.write
+          messaging-client-password:
+            provider: spring
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: password
+            scope: message.read,message.write
+
+        provider:
+          spring:
+            authorization-uri: ${app.auth-server.base-url}/oauth2/authorize
+            token-uri: ${app.auth-server.base-url}/oauth2/token
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    sample.util.PropertiesDumper: debug
+    reactor.netty: debug
