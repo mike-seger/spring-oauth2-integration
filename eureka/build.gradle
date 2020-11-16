@@ -1,7 +1,7 @@
 dependencies {
     implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server"
     implementation "org.glassfish.jaxb:jaxb-runtime"
-    testCompile "org.springframework.boot:spring-boot-starter-test:*"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
 
     implementation project(':lib:common')
 }
