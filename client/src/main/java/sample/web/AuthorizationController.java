@@ -75,13 +75,16 @@ public class AuthorizationController {
 	}
 
 	@GetMapping("/explicit")
-	public Mono<String[]> explicit() {
-		return this.webClient
+	public String explicit(Model model) {
+		String[] messages = webClient
 			.get()
 			.uri("http://localhost:8092/messages")
 			.attributes(clientRegistrationId("messaging-client-password"))
 			.retrieve()
-			.bodyToMono(String[].class);
+			.bodyToMono(String[].class)
+			.block();
+		model.addAttribute("messages", messages);
+		return "index";
 	}
 
 	private OAuth2AuthorizedClient authorizedClient;

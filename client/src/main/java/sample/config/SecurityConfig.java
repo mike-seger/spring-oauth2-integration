@@ -13,7 +13,7 @@ public class SecurityConfig {
 		return http
 			.authorizeExchange(authorizeExchange -> authorizeExchange
 				.pathMatchers("/favicon.ico", "/*/actuator/**", "/login", "/logout",
-						"/authorize", "/auth/login", "/auth/logout", "/auth/logged",
+					"/explicit", "/authorize", "/auth/login", "/auth/logout", "/auth/logged",
 					"/user/register", "/webjars/**").permitAll())
 				.oauth2Client()
 				.and().logout(logout -> {})
