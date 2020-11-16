@@ -1,6 +1,9 @@
 = OAuth 2.0 Integration Sample
 
 !work in progress migrating to reactive!
+and integrate okta example
+https://github.com/oktadeveloper/okta-spring-cloud-gateway-example
+https://dzone.com/articles/how-to-use-spring-cloud-gateway-with-oauth-20-patt  
 
 This sample integrates `spring-security-oauth2-client` and `spring-security-oauth2-resource-server` with *Spring Authorization Server*.
 
