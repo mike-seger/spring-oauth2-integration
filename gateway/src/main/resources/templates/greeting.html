@@ -5,9 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h1><p th:text="'Hello, ' + '' + '!'" ></p></h1>
+<p th:text="'idToken: ' + ${idToken}" ></p><br/>
+<p th:text="'accessToken: ' + ${accessToken.tokenValue}" ></p><br>
+<!--
 <h1><p th:text="'Hello, ' + ${username} + '!'" ></p></h1>
 <p th:text="'idToken: ' + ${idToken.tokenValue}" ></p><br/>
 <p th:text="'accessToken: ' + ${accessToken.tokenValue}" ></p><br>
+-->
 </body>
 </body>
 </html>

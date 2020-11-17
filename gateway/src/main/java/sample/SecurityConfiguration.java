@@ -12,11 +12,14 @@ public class SecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http.csrf().disable()
-            .authorizeExchange()
+          /*  .authorizeExchange()
             .anyExchange()
             .authenticated()
             .and().oauth2Login()
-            .and().oauth2ResourceServer().jwt();
+            .and().oauth2ResourceServer().jwt()
+            .and().permitAll()
+          */
+            ;
         return http.build();
     }
 }
